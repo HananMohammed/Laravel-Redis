@@ -23,3 +23,4 @@ use Illuminate\Support\Facades\Route;
 //});
 Route::get("/" ,"WelcomeController@index");
 Route::get("/article/{id}" ,"BlogController@blogArticle")->where("id" ,"[0-9]+" );
+Route::get("/blog" ,"BlogController@showBlog");
