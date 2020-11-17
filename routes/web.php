@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use Illuminate\Support\Facades\Redis;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -24,3 +24,7 @@ use Illuminate\Support\Facades\Route;
 Route::get("/" ,"WelcomeController@index");
 Route::get("/article/{id}" ,"BlogController@blogArticle")->where("id" ,"[0-9]+" );
 Route::get("/blog" ,"BlogController@showBlog");
+Route::get('publish', function () {
+
+    Redis::publish('test-channel', json_encode(['cache' => 'clear']));
+});
